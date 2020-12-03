@@ -41,6 +41,7 @@ Vagrant.configure("2") do |config|
     popd
 
 
+    # Assumes this directory is already checked out on the host
     pushd /vagrant/cli-hijacker
       make aws-vault-linux-amd64
       cp aws-vault-linux-amd64 /usr/local/bin/aws-vault
