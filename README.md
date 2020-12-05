@@ -31,6 +31,21 @@ Then in the vm as root:
 ./scripts/monitor_http.sh
 ```
 
+## Troubleshooting
+
+If you don't see output from the monitor_http.sh script and you've used aws-vault in the past, there's a good chance requests are being routed to 169.254.169.254 on your hosts loopeback interface. aws-vault I believe is supposed to remove this when it shuts down but many times it get's left. Try deleting that address to see if that fixes it.
+
+For MacOS:
+
+```
+sudo ifconfig lo0 delete 169.254.169.254
+```
+
+For Linux:
+```
+sudo ip addr delete 169.254.169.254 dev lo0
+```
+
 ## On Your Host
 
 ### Conditions
