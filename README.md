@@ -14,6 +14,17 @@ For reference I wrote this post below some time ago about the general underlying
 
 https://blog.ryanjarv.sh/2020/10/17/abusing-the-aws-sdk.html
 
+As a work around for future potential issues like this I recommend one or all of the following:
+* sudo sh -c "echo 'AWS_EC2_METADATA_DISABLED=true' >> /etc/profile"
+* Make sure your default profile is set
+  * Personally if you manage multiple accounts I would put fake creds here. Just a good idea in general to avoid connecting to the wrong account accidentally.
+* Set 169.254.169.254 on your loopback adapter.
+  * MacOS/BSD varients: `sudo ifconfig lo0 add 169.254.169.254`
+  * Linux: `ip addr add 169.254.169.254 dev lo0`
+  * I haven't tested this attack against windows, or used ipconfig in a while, but will update this next time I get the chance. PR's also welcome here if you're able to try it.
+
+The first two can workarounds can still fail in cases where you're using docker. I believe the third will cover that case though (TODO: test this).
+
 
 ## Running Attacker VM
 
