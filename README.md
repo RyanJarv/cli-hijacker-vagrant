@@ -14,7 +14,10 @@ For reference I wrote this post below some time ago about the general underlying
 
 https://blog.ryanjarv.sh/2020/10/17/abusing-the-aws-sdk.html
 
-As a work around for future potential issues like this I recommend one or all of the following:
+### Workarounds
+
+In addition to updating to 2.1.7 or newer I'd recommend the following workaround's for potential future issues like this:
+
 * sudo sh -c "echo 'AWS_EC2_METADATA_DISABLED=true' >> /etc/profile"
 * Make sure your default profile is set
   * Personally if you manage multiple accounts I would put fake creds here. Just a good idea in general to avoid connecting to the wrong account accidentally.
